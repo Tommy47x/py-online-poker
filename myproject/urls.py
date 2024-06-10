@@ -18,10 +18,10 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LogoutView
-from onlinepoker.views import RegisterView, HomeView, poker_game
+from onlinepoker.views import RegisterView, HomeView, poker_view
 
 urlpatterns = [
-    path('poker/', poker_game, name='poker'),
+    path('poker/', poker_view, name='poker'),
     path('admin/', admin.site.urls),
     path('', RegisterView.as_view(), name='register'),
     path('home/', HomeView.as_view(), name='home'),

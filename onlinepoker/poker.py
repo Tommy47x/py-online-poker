@@ -1,4 +1,3 @@
-
 from texasholdem.game.game import TexasHoldEm
 from texasholdem.gui.text_gui import TextGUI
 
@@ -12,4 +11,4 @@ while game.is_game_running():
         gui.run_step()
 
     path = game.export_history('./pgns')     # save history
-    gui.replay_history(path)                    # replay history
+    gui.replay_history(path)  

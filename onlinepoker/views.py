@@ -5,21 +5,13 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic, View
 from django.contrib.auth.mixins import LoginRequiredMixin
-from texasholdem.game.game import TexasHoldEm
-from texasholdem.gui.text_gui import TextGUI
+import json
+from django.http import HttpResponseRedirect
 
-def poker_game(request):
-    game = TexasHoldEm(buyin=500, big_blind=5, small_blind=2, max_players=6)
-    gui = TextGUI(game=game)
-    if request.method == 'POST':
-        # Here, handle different game actions based on POST data
-        action = request.POST.get('action')
-        gui.run_step(action)
-    context = {
-        'game_state': gui.display()
-    }
-    return render(request, 'onlinepoker/poker.html', context)
-
+def poker_view(request):
+    # You can define the game_state or other variables here
+    game_state = "Your current cards or game status"
+    return render(request, 'onlinepoker/poker.html', {'game_state': game_state})
 
 class HomeView(LoginRequiredMixin, View):
     login_url = '/login/'  # Redirect to login page if not authenticated
